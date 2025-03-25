@@ -22,10 +22,20 @@ const Dashboard = () => {
     <div>
       <h2>Welcome to the Dashboard</h2>
       {questions.map((q, index) => (
-        <div key={q.id} style={{ marginBottom: '10px' }}>
-          <Link to={`/question/${q.id}`} style={{ textDecoration: 'none', color: 'blue' }}>
+        <div key={q.id} style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ccc' }}>
+          <Link to={`/question/${q.id}`} style={{ textDecoration: 'none', color: 'blue', fontSize: '18px' }}>
             {index + 1}. {q.title}
           </Link>
+          <div style={{ marginTop: '8px' }}>
+            <strong>Test Cases:</strong>
+            <ul>
+              {q.test_cases.map((tc, i) => (
+                <li key={i}>
+                  <strong>Input:</strong> {tc.input} | <strong>Expected Output:</strong> {tc.expected_output}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       ))}
     </div>
